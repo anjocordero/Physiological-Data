@@ -1,3 +1,6 @@
+def append_labels(labels, file):
+    "Appends the column of labels in 'labels' to the right side of 'file'"
+
 import os
 cwd = os.getcwd()
 import os
@@ -17,3 +20,6 @@ files.remove(labels)
 files.remove('appender.py')
 files.remove('.git')            # Remove if not cloned from git repo!
 files.remove('README.md')       # Remove if not cloned from git repo!
+
+for file in files:
+    append_labels(labels, file)
