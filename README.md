@@ -2,7 +2,7 @@
 Takes the labels from an .xlsx file in the current directory and applies it to all .csv and .xlsx files in the current directory with a matching number of rows. Combined files are then transposed.
 
 ## Setup
-Running this software requires python, pip, pandas, and xlrd. It should be compatible with all operating systems, however python is a little more complicated on MacOS. You might have to look up how to install everything properly. There might be some missing dependencies depending on your OS, but you should be able to install most of them with pip, the same way you will in the following directions.
+Running this software requires python, pip, pandas, and xlrd. It should be compatible with all operating systems, however python is a little more complicated on MacOS. You might have to look up how to install everything properly. There might be some missing dependencies depending on your OS, but you should be able to install most of them with pip (or pip3), the same way you will in the following directions.
 
 ### Python
 If you don't have python installed, you can download it from https://www.python.org/
@@ -18,5 +18,9 @@ Pandas is a data science library used to handle excel documents in python. To in
 ### xlrd
 xlrd is needed by pandas to load excel files. I don't know if it comes included, but I had to install it on my own. To install this, open a command prompt and type:
 > pip install xlrd
+
+### openpyxl
+openpyxl is another dependency that I only needed to install on my MacOS machine. You can install it the same way:
+> pip install openpyxl
 
 Written by Anjo Gabriel Cordero
