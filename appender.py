@@ -2,20 +2,6 @@ import os
 import pandas as pd
 cwd = os.getcwd()
 
-def append_labels(labels, file):
-    "Appends the column of labels in 'label_name' to the index of 'file' and transposes file"
-    
-    data = pd.read_csv(file)
-    index = labels.index
-    data.index = index
-
-    if data.shape[0] == labels.shape[0]:
-        data = data.T
-        data.to_csv("combined_" + file)
-
-    else:
-        print("Mismatched size in file " + file)
-
 print("Before running, make sure appender.py is in the same folder as the file containing the data and the labels to be added on to the data. If not, press CTRL + C to abort.")
 label_name = input("Enter filename of the .xlsx file which contains labels: ")
 
@@ -27,9 +13,36 @@ if files.count(label_name) == 0: # Check if file exists
     exit()
 
 labels = pd.read_excel(label_name)
+
 files.remove(label_name)
+index = labels.index
+
+combined_file = labels
+
+data = pd.read_csv(files[0])
+if len(files) != 0:
+    if data.shape[0] == combined_file.shape[0]:
+        data.index = index
+        data = data.T
+        data = data.reset_index()
+        data.index = [files[0]] * len(data)
+        combined_file = data
+
+files.remove(files[0])
 
 for file in files:
-    append_labels(labels, file)
+    data = pd.read_csv(file)
+
+    if data.shape[0] + 1 == combined_file.shape[1]:
+        data.index = index
+        data = data.T
+        data = data.reset_index()
+        data.index = [file] * len(data)
+        combined_file = pd.concat([combined_file, data])
+
+    else:
+        print("Mismatched size in file " + file)
+
+combined_file.to_excel("combined_" + label_name)
 
 print("Completed!")
