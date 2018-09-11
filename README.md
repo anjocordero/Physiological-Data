@@ -2,7 +2,7 @@
 Takes the labels from an .xlsx file in the current directory and applies it to all .csv and .xlsx files in the current directory with a matching number of rows. Combined files are then transposed.
 
 ## Setup
-Running this software requires python, pip, pandas, and xlrd. It should be compatible with all operating systems, however python is a little more complicated on MacOS. You might have to look up how to install everything properly.
+Running this software requires python, pip, pandas, and xlrd. It should be compatible with all operating systems, however python is a little more complicated on MacOS. You might have to look up how to install everything properly. There might be some missing dependencies depending on your OS, but you should be able to install most of them with pip, the same way you will in the following directions.
 
 ### Python
 If you don't have python installed, you can download it from https://www.python.org/
