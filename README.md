@@ -8,7 +8,7 @@ Running this software requires python, pip, pandas, and xlrd. It should be compa
 If you don't have python installed, you can download it from https://www.python.org/
 
 ### pip
-Pip is a program that installs python extensions and libraries. It should come included with a new install of python but if not, open a command prompt and type:
+Pip is a program that installs python extensions and libraries, that we'll use to install the rest of the software. It should come included with a new install of python but if not, open a command prompt and type:
 > sudo apt-get pip
 
 ### pandas
