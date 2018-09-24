@@ -19,29 +19,38 @@ index = labels.index
 
 combined_file = labels
 
-data = pd.read_csv(files[0])
+
 if len(files) != 0:
-    if data.shape[0] == combined_file.shape[0]:
+    #if data.shape[0] == combined_file.shape[0]:
+        data = pd.read_csv(files[0])
         data.index = index
         data = data.T
-        data = data.reset_index()
-        data.index = [files[0]] * len(data)
+        """ data = data.reset_index()
+        data.index = [files[0]] * len(data) """
+        arrays = list(data.index), [files[0]] * len(data)
+        tuples = list(zip(*arrays))
+        multi_index = pd.MultiIndex.from_tuples(tuples, names=['Index', 'File'])
         combined_file = data
+        combined_file.index = multi_index
+        files.remove(files[0])
 
-files.remove(files[0])
 
 for file in files:
     data = pd.read_csv(file)
 
-    if data.shape[0] + 1 == combined_file.shape[1]:
-        data.index = index
-        data = data.T
-        data = data.reset_index()
-        data.index = [file] * len(data)
-        combined_file = pd.concat([combined_file, data])
+    #if data.shape[0] + 1 == combined_file.shape[1]:
+    data.index = index
+    data = data.T
+    """ data = data.reset_index()
+    data.index = [file] * len(data) """
+    arrays = list(data.index), [file] * len(data)
+    tuples = list(zip(*arrays))
+    multi_index = pd.MultiIndex.from_tuples(tuples, names=['Index', 'File'])
+    data.index = multi_index
+    combined_file = pd.concat([combined_file, data], axis=0, join='outer', sort=False)
 
-    else:
-        print("Mismatched size in file " + file)
+    #else:
+    #    print("Mismatched size in file " + file)
 
 combined_file.to_excel("combined_" + label_name)
 
