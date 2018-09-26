@@ -52,6 +52,10 @@ for file in files:
     #else:
     #    print("Mismatched size in file " + file)
 
+combined_file.sort_index(inplace=True)
 combined_file.to_excel("combined_" + label_name)
+
+for index in combined_file.index:
+    combined_file.loc[slice(index[0], index[0]), :].to_excel(index[0] + '_' + label_name)
 
 print("Completed!")
