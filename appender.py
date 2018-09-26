@@ -56,6 +56,8 @@ combined_file.sort_index(inplace=True)
 combined_file.to_excel("combined_" + label_name)
 
 for index in combined_file.index:
-    combined_file.loc[slice(index[0], index[0]), :].to_excel(index[0] + '_' + label_name)
+    index_name = index[0].replace('/', '_')
+    index_name = index_name.replace('\\', '_')
+    combined_file.loc[slice(index[0], index[0]), :].to_excel(index_name + '_' + label_name)
 
 print("Completed!")
