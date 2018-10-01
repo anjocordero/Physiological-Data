@@ -1,5 +1,11 @@
 # Physiological Data
-Takes the labels from an .xlsx file in the current directory and applies it to all .csv and .xlsx files in the current directory with a matching number of rows. Files are then combined, transposed, and organized by index. This program should run properly as long as there are the correct number of columns in the data files.
+Takes the labels from an .xlsx file in the current directory and applies it to all .csv and .xlsx files in the current directory with the correctly labeled columns. Files are then combined, transposed, and organized by index. This program should run properly as long as there are the correct number of columns in the data files.
+
+To run, place appender.py in the same directory as the files you wish to combine, and either open the file using the python launcher, or navigate to the folder in the command line and run
+> python appender.py
+
+or if you have both versions of python installed, 
+> python3 appender.py
 
 ## Setup
 Running this software requires python, pip, pandas, and xlrd. It should be compatible with all operating systems, however python is a little more complicated on MacOS. You might have to look up how to install everything properly if you run into errors. There may be some missing dependencies depending on your OS, but you should be able to install most of them with pip (or pip3), the same way you will in the following directions.
